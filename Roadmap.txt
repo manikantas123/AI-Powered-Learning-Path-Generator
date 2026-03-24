@@ -25,7 +25,7 @@ Data Cleanup: Handling Missing Data, Removing Duplicates, Finding Outliers, Data
 
 Data Analysis Techniques:
 
-Descriptive Analysis: Generating Statistics, Visualizing Distributions.
+Descriptive Analysis: Generating Statistics, Visualizing Distributions and charts.
 
 Statistical Analysis: Hypothesis Testing, Correlation Analysis, Regression.
 
