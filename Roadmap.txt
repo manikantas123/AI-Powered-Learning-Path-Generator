@@ -19,7 +19,7 @@ SQL: Learn SQL.
 
 Mastering Data Handling:
 
-Data Collection: Databases, CSV Files, APIs, Web Scraping.
+Data Collection: Databases, CSV Files, APIs, Web Scraping and using automation.
 
 Data Cleanup: Handling Missing Data, Removing Duplicates, Finding Outliers, Data Transformation. (Libraries: Pandas, Dplyr).
 
