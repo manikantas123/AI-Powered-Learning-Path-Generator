@@ -18,7 +18,7 @@ for block in roles_blocks:
         role_name = role_line[:-7].strip()
     else:
         role_name = role_line
-        
+        #adding road maps
     roadmaps[role_name] = []
     
     current_module = None
