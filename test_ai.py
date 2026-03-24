@@ -10,5 +10,7 @@ try:
     print("Response received.")
     print("Text:", response.text)
 except Exception as e:
+    
+    
     print("Error occurred:")
     traceback.print_exc()
