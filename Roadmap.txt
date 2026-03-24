@@ -1,0 +1,378 @@
+1. Data Analyst Roadmap
+Introduction: What is Data Analytics, Types of Data Analytics (Descriptive, Diagnostic, Predictive, Prescriptive).
+
+Building a Strong Foundation:
+
+Excel Functions: IF, DATEDIF, VLOOKUP / HLOOKUP, REPLACE / SUBSTITUTE, UPPER / LOWER / PROPER, CONCAT, TRIM, AVERAGE, COUNT, SUM, MIN / MAX.
+
+Excel Features: Charting, Pivot Tables.
+
+Key Concepts of Data: Collection, Cleanup, Exploration, Visualization, Statistical Analysis, Machine Learning.
+
+Gain Programming Skills:
+
+Programming Lang: Python, R.
+
+Libraries: Data Manipulation Libraries, Data Visualization Libraries.
+
+SQL: Learn SQL.
+
+Mastering Data Handling:
+
+Data Collection: Databases, CSV Files, APIs, Web Scraping.
+
+Data Cleanup: Handling Missing Data, Removing Duplicates, Finding Outliers, Data Transformation. (Libraries: Pandas, Dplyr).
+
+Data Analysis Techniques:
+
+Descriptive Analysis: Generating Statistics, Visualizing Distributions.
+
+Statistical Analysis: Hypothesis Testing, Correlation Analysis, Regression.
+
+Statistics Concepts: Mean, Median, Mode, Range, Variance, Standard Deviation, Skewness, Kurtosis.
+
+Data Visualization:
+
+Tools: Tableau, Power BI.
+
+Libraries: Matplotlib, Seaborn, ggplot2.
+
+Charting: Bar, Line, Scatter, Funnel, Histogram, Stacked, Heatmap, Pie.
+
+Advanced Topics:
+
+Machine Learning: Supervised, Unsupervised, Reinforcement, Decision Trees, Naive Bayes, KNN, K-Means, Logistic Regression.
+
+Deep Learning (Optional): Neural Networks (CNNs, RNNs), TensorFlow, Pytorch, Image Recognition, NLP.
+
+Big Data Technologies: Hadoop, Spark, MapReduce, MPI, Parallel Processing.
+
+2. Machine Learning Roadmap
+Prerequisites: Python Roadmap, Math Foundations.
+
+Mathematical Foundations:
+
+Calculus: Derivatives, Chain rule, Gradient, Jacobian, Hessian.
+
+Linear Algebra: Matrix Operations, Vectors, Tensors, SVD, Eigenvalues, Diagonalization.
+
+Probability: Bayes Theorem, Random Variables, PDFs, Distributions.
+
+Statistics: Descriptive Stats, Graphs, Inferential Statistics.
+
+Programming Fundamentals: Python (Variables, Data Structures, OOP, Essential Libraries).
+
+Data Collection & Cleaning: SQL, NoSQL, JSON, Parquet, Feature Engineering, Scaling, Dimensionality Reduction.
+
+Machine Learning Types: Supervised, Unsupervised, Semi-supervised, Self-supervised, Reinforcement Learning.
+
+Scikit-Learn Workflow: Data Loading, Train-Test Split, Model Selection, Tuning, Prediction.
+
+Supervised Learning:
+
+Regression: Linear, Polynomial, Lasso, Ridge.
+
+Classification: KNN, Logistic Regression, SVM, Decision Trees, Random Forest, Gradient Boosting.
+
+Unsupervised Learning:
+
+Clustering: K-Means, Hierarchical, DBSCAN.
+
+Dimensionality Reduction: PCA, Autoencoders.
+
+Model Evaluation: Accuracy, Precision, Recall, F1-Score, ROC-AUC, Confusion Matrix, Cross-Validation.
+
+Deep Learning:
+
+Basics: Perceptrons, Backpropagation, Activation Functions, Loss Functions.
+
+Libraries: TensorFlow, PyTorch, Keras.
+
+Architectures: CNNs, RNNs, GRU, LSTM, Transformers (Self-attention, Multi-head attention).
+
+Advanced ML: NLP (Tokenization, Embeddings), Generative Adversarial Networks (GANs), Explainable AI.
+
+3. Android Developer Roadmap
+Pick a Language: Kotlin, Java.
+
+The Fundamentals: Basics of Kotlin, OOP, Data Structures, Gradle, Hello World App.
+
+Version Control: Git (GitHub, Bitbucket, GitLab).
+
+App Components: Services, Content Provider, Broadcast Receiver, Intents, Activity Lifecycle, Tasks & Backstack.
+
+Interface & Navigation:
+
+Layouts: Frame, Linear, Relative, Constraint, RecyclerView.
+
+Elements: TextView, Toast, Fragments, Buttons, Edittext, Animations.
+
+Modern: Jetpack Compose, Navigation Components.
+
+Design & Architecture: MVVM, MVI, MVP, MVC, Repository Pattern, Dependency Injection (Dagger, Hilt, Koin).
+
+Storage: Shared Preferences, Room Database, File System.
+
+Network: Retrofit, OkHttp, Apollo-Android.
+
+Asynchronism: Coroutines, Threads, RxJava, WorkManager.
+
+Common Services: Firebase (Auth, Firestore, Cloud Messaging), Google Maps, AdMob.
+
+Testing: JUnit, Espresso, Linting (Ktlint).
+
+Distribution: Signed APK, Play Store.
+
+4. Software Architect Roadmap
+Understand the Basics: Levels of Architecture (Application, Solution, Enterprise).
+
+Responsibilities: Tech Decisions, Design Decisions, Requirements Elicitation, Enforcing Standards, Mentoring.
+
+Programming Languages: Java, Kotlin, Python, Ruby, Go, JavaScript, .NET.
+
+Important Skills: Documentation, Communication, Estimation, Decision Making, Simplifying Things.
+
+Design Principles: SOLID, TDD, DDD, ACID, CAP Theorem, OOP, Aspect.
+
+Patterns: MVC, MVVM, MVP, CQRS, Eventual Consistency.
+
+Tools: Git, Slack, Trello, Atlassian.
+
+Architecture Styles: Microservices, Serverless, Client-Server, Layered, SOA.
+
+Security: Hashing, PKI, OWASP, Auth Strategies.
+
+Working with Data: SQL, NoSQL, ETL, Data Warehousing, Analytics (Spark, Hadoop).
+
+Web/Mobile: Reactive, Functional, SPA, SSR, SSG, Microfrontends.
+
+Operations Knowledge: Cloud Providers, Infrastructure as Code, CI/CD, Containers, Service Mesh.
+
+Management: Agile (Scrum, Kanban), LeSS, SaFe.
+
+Enterprise Software: SAP, Salesforce, MS Dynamics.
+
+5. Game Developer Roadmap
+Game Mathematics: Linear Algebra (Vectors, Matrices, Transformations), Geometry, Quaternions, Euler Angles, Curves (Spline, Bezier).
+
+Game Physics: Dynamics (Mass, Inertia, Friction), Collision Detection (SAT, GJK), Bounding Volumes.
+
+Game Engine: Unity 3D, Unreal Engine, Godot.
+
+Programming Languages: C++, C#, Rust, Python, GDScript.
+
+Computer Graphics: Ray Tracing, Rasterization, Graphics Pipeline, Shaders, Rendering Equation.
+
+Graphics API: DirectX, OpenGL, Vulkan, Metal, WebGL.
+
+Game AI: Pathfinding (A*), Decision Making (State Machines, Behavior Trees, Fuzzy Logic), Movement.
+
+Advanced Rendering: Physically-Based Rendering (PBR), Real-time Ray Tracing.
+
+6. Product Manager Roadmap
+Introduction: What is PM, Lifecycle, Key Skills.
+
+Idea Generation: Mind Mapping, Brainstorming, Problem Identification.
+
+Market Analysis: Blue Ocean Strategy, User Research, Personas, Competitive Analysis.
+
+Product Strategy: Positioning, Value Proposition, Vision & Mission.
+
+Product Planning: Requirements (PRDs), Roadmaps, Backlog Management.
+
+Product Design: UX/UI Design, Wireframing, Prototyping, Design Thinking, A/B Testing.
+
+Agile Methodology: Scrum, Kanban.
+
+Product Metrics: KPIs (Retention, Churn, LTV, CAC), Data-Driven Decision Making.
+
+Stakeholder Management: Conflict Resolution, Negotiation, Leadership.
+
+Risk Management: Identifying Risks, Assessment, Mitigation.
+
+7. DevOps Roadmap
+Programming Language: Python, Go, Node.js, Ruby, Rust.
+
+Operating System: Linux (Ubuntu, RHEL, SUSE), Unix (FreeBSD, OpenBSD).
+
+Terminal Knowledge: Bash/PowerShell, Vim/Nano, Text Manipulation, Networking Tools.
+
+Version Control: Git, VCS Hosting (GitHub, GitLab, Bitbucket).
+
+Containers: Docker, LXC.
+
+Networking & Protocols: HTTP/S, DNS, SSH, SSL/TLS, OSI Model.
+
+Web Server: Nginx, Apache, Caddy, IIS.
+
+Cloud Providers: AWS, Azure, Google Cloud, DigitalOcean.
+
+Infrastructure as Code: Terraform, CloudFormation, Pulumi, Ansible, Chef, Puppet.
+
+CI/CD Tools: Jenkins, GitHub Actions, GitLab CI, CircleCI.
+
+Monitoring & Logging: Prometheus, Grafana, ELK Stack, Datadog.
+
+Orchestration: Kubernetes, Docker Swarm, OpenShift.
+
+8. QA Engineer Roadmap
+Fundamentals: QA Mindset, Testing Approaches (White/Grey/Black Box), SDLC (Waterfall, Agile).
+
+Testing Methodologies: TDD, BDD, ATDD.
+
+Manual Testing: Test Cases, Scenarios, Verification & Validation.
+
+Automated Testing:
+
+UI/Frontend: Selenium, Playwright, Cypress, Puppeteer.
+
+Backend/API: Postman, Rest Assured, SoapUI.
+
+Mobile: Appium, Espresso, Detox.
+
+Non-Functional Testing: Load (JMeter), Security (OWASP), Accessibility (Axe).
+
+Monitoring & Tools: Jira, Allure, Git, Jenkins, Docker.
+
+9. Data Engineer Roadmap
+Introduction: Data Engineering Lifecycle, Choosing Tech.
+
+Learn the Basics: Python/Java/Scala, SQL, Linux, Networking Fundamentals.
+
+Data Storage:
+
+Relational: MySQL, PostgreSQL, Oracle.
+
+NoSQL: MongoDB (Document), Cassandra (Column), Redis (Key-Value), Neo4j (Graph).
+
+Data Warehousing: BigQuery, Snowflake, Redshift.
+
+Data Ingestion: Batch vs Streaming (Kafka, RabbitMQ, Pub/Sub).
+
+Data Processing: ETL/ELT, Spark, Flink, Apache Airflow.
+
+Cloud Computing: AWS, Azure, Google Cloud (S3, EC2, Lambda).
+
+Security & Privacy: Encryption, GDPR, HIPAA, Data Lineage.
+
+10. AI Engineer Roadmap
+Introduction: What is an AI Engineer?, Roles and Responsibilities, Impact on Product Development, AI Engineer vs ML Engineer.
+
+Working with LLMs:
+
+Core LLM Elements: Tokens, Context, Sampling Parameters (Temperature, Top-K, Top-P, Repetition Penalty).
+
+Common Terminology: AI vs ML, Large Language Model (LLM), Embeddings, Training, Inference, Vector DBs, AI Agents, RAG, Fine-tuning, Prompt Engineering, Context Engineering.
+
+Prompt vs Context Engineering:
+
+Prompt Engineering: Zero-shot, Few-shot, FLAN, CoT (Chain of Thought), Input Prompt, Function Calling, Prompt Caching, Streaming Responses, System Prompting.
+
+Context Engineering: External Memory, Fixed and Dynamic Filters, Context Composition, Context Limitation.
+
+Types of Models: Pre-trained Models, Closed vs Open Source, Self-Hosted Models.
+
+Closed: Anthropic Claude, Google Gemini, OpenAI (GPT), Cohere, Mistral.
+
+Open: Meta Llama, DeepSeek, Qwen, Mistral.
+
+Embeddings & Vector Databases:
+
+What are Embeddings: Semantic Search, Data Classification, Recommendation Systems, Anomaly Detection.
+
+Embedding Models: OpenAI Embeddings API, Gemini Embedding, Cohere, Sentence Transformers (Open Source).
+
+Vector Databases: Chroma, Pinecone, Weaviate, FAISS, Milvus, Qdrant, LanceDB, MongoDB Atlas.
+
+RAG (Retrieval-Augmented Generation): Why use RAG?, RAG vs Fine-tuning, Implementing RAG (Chunking, Embedding, Vector Database, Retrieval Process, Generation).
+
+Frameworks: LangChain, LlamaIndex, Haystack, Realflow.
+
+AI Agents: Agent Objectives, ReAct Prompting, Multi-agents, OpenAI Assistants API, Claude Agent SDK.
+
+Model Context Protocol (MCP): MCP Host, MCP Client, MCP Server, Data Layer, Transport Layer.
+
+AI Safety and Ethics: Prompt Injection Attacks, Bias and Fairness, Content Moderation APIs, Adversarial Testing.
+
+Multimodal AI: Image Understanding/Generation, Video Understanding, Audio Processing, Text-to-Speech.
+
+Development Tools: Claude Code, Cursor, Windsurf, Replit.
+
+11. Cyber Security Expert Roadmap
+Fundamental IT Skills: Computer Hardware Components, OS-independent Troubleshooting, Basics of Computer Networking.
+
+Operating Systems: Windows, Linux, macOS (Installation, Configuration, CLI vs GUI, Permissions, Troubleshooting).
+
+Networking Knowledge: OSI Model, Common Protocols (SSH, FTP, HTTP/S, SSL/TLS), Network Topologies, Subnetting, Public vs Private IP.
+
+Security Skills and Knowledge:
+
+Core Concepts: Zero Trust, Compliance and Auditing, Risk Management, CIA Triad, Privilege Escalation.
+
+Tools: Nmap, Wireshark, Metasploit, Burp Suite, Nessus, Netcat.
+
+Cryptography: Hashing, Symmetric vs Asymmetric Keys, PKI, Digital Signatures.
+
+Attack Types: Phishing, Malware, SQL Injection, Cross-Site Scripting (XSS), DoS/DDoS, Social Engineering.
+
+Incident Response: Preparation, Identification, Containment, Eradication, Recovery.
+
+Cloud Skills: Infrastructure as Code, Serverless, Cloud Models (Private, Public, Hybrid), Common Vendors (AWS, GCP, Azure).
+
+Programming Skills: Python, Go, JavaScript, C++, PowerShell.
+
+12. Full Stack Developer Roadmap
+Frontend Foundations: * HTML & CSS: Static Webpages, Responsive Design.
+
+JavaScript: Interactivity, npm, External Packages.
+
+Version Control: Git & GitHub (Collaborative Work).
+
+Frontend Frameworks: React, Tailwind CSS (Building Frontend Apps).
+
+Backend Development (Node.js): * CLI Apps, Simple CRUD Apps.
+
+Database: PostgreSQL.
+
+Auth & APIs: JWT Auth, RESTful APIs, Redis.
+
+DevOps Foundations:
+
+Linux Basics: Basic terminal commands.
+
+Basic AWS Services: Route53, SES, EC2, VPC, S3.
+
+CI/CD & Infrastructure: GitHub Actions, Ansible, Terraform (Automation, Infrastructure as Code).
+
+Monitoring: Monit.
+
+13. UX Design Roadmap
+Human Decision Making: * Frameworks: BJ Fogg's Behavior Model, CREATE Action Funnel, Dual Process Theory.
+
+Buzzwords: Nudge Theory, Behavioral Economics, Persuasive Technology.
+
+Behavior Change Strategies: BJ Fogg's Behavior Grid, Classifying Behavior.
+
+Creating/Changing Habits: Hook Model (Nir Eyal), Cue-Routine-Reward Model.
+
+Understanding the Product: User Personas, Target Users, Clarifying Product (Target Outcome/Action).
+
+Conceptual Design: User Stories, Business Model Canvas, SWOT Analysis, Competitor Analysis.
+
+Prototyping:
+
+Tools: Figma, Adobe XD, Sketch, Balsamiq.
+
+Wireframing: Layout Rules.
+
+UX Best Practices:
+
+Attention: Clearing distractions, Clear "Where to Act".
+
+Intuitive Reaction: Professional/Personal feel, Social Proof.
+
+Cognitive Load: Avoiding Choice Overload, Avoiding Cognitive Overhead.
+
+UX Patterns: Call to Action, Status Reports, Gamification, Goal Trackers.
+
+Measuring Impact: Multivariate Testing, Incremental A/B Testing.

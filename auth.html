@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CareerNav AI | Authentication</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        body { margin: 0; overflow: hidden; background: #09090b; }
+        .auth-split { display: flex; height: 100vh; width: 100vw; }
+        
+        .auth-visual { 
+            flex: 1; 
+            position: relative; 
+            display: flex; 
+            flex-direction: column; 
+            justify-content: center; 
+            padding: 80px; 
+            background: linear-gradient(220deg, rgba(13, 13, 18, 0.9) 0%, rgba(9, 9, 11, 0.95) 100%);
+            border-right: 1px solid rgba(255,255,255,0.05);
+            overflow: hidden;
+        }
+        .auth-visual::before {
+            content: ''; position: absolute; inset: 0;
+            background-image: radial-gradient(circle at 50% 50%, rgba(139, 92, 246, 0.15) 0%, transparent 60%);
+            z-index: 0;
+        }
+        .auth-visual-content { position: relative; z-index: 10; max-width: 600px; margin: auto; }
+        .auth-visual h1 { font-size: 4.5rem; font-weight: 800; line-height: 1.1; margin-bottom: 20px; }
+        .auth-visual p { font-size: 1.2rem; color: #a1a1aa; line-height: 1.6; }
+        
+        .auth-interactive { 
+            flex: 1; 
+            display: flex; 
+            align-items: center; 
+            justify-content: center; 
+            background: #09090b;
+            position: relative;
+        }
+        .auth-card-modern {
+            width: 100%;
+            max-width: 480px;
+            padding: 50px;
+        }
+        
+        .form-switch { display: flex; margin-bottom: 40px; background: rgba(255,255,255,0.03); border-radius: 16px; padding: 6px; border: 1px solid rgba(255,255,255,0.05); }
+        .switch-btn { flex: 1; padding: 14px; text-align: center; border-radius: 12px; cursor: pointer; font-weight: 600; color: #71717a; transition: all 0.3s ease; }
+        .switch-btn.active { background: var(--p-gradient); color: white; box-shadow: 0 4px 15px rgba(139, 92, 246, 0.3); }
+        
+        .auth-form { display: none; animation: fadeIn 0.4s; }
+        .auth-form.active { display: block; }
+        @keyframes fadeIn { from{opacity:0; transform:translateY(10px);} to{opacity:1; transform:translateY(0);} }
+        
+        .auth-error { background: rgba(239, 68, 68, 0.1); border: 1px solid rgba(239, 68, 68, 0.3); color: #fca5a5; padding: 15px; border-radius: 12px; margin-top: 20px; font-weight: 500; font-size: 0.9rem; display: none; text-align: center; }
+    </style>
+</head>
+<body>
+
+    <div class="auth-split">
+        <div class="auth-visual">
+            <div class="visual-blob" style="position:absolute; top:-100px; left:-100px; opacity:0.15;"></div>
+            <div class="auth-visual-content">
+                <div class="brand" style="margin-bottom: 50px; cursor:default;">
+                    <div class="brand-icon"><i class="fas fa-layer-group"></i></div>
+                    <div class="brand-text-wrapper">
+                        <span class="brand-main">CAREER<span style="color:#8b5cf6;">NAV</span></span>
+                        <span class="brand-sub" style="color:#a1a1aa;">AI-Powered Ecosystem</span>
+                    </div>
+                </div>
+                <h1>Architect Your Next <span class="accent-text">Breakthrough.</span></h1>
+                <p>Upload your professional history, specify your career trajectory, and let our artificial intelligence construct the perfect, NSQF-compliant upskilling syllabus.</p>
+            </div>
+        </div>
+
+        <div class="auth-interactive">
+            <div class="auth-card-modern">
+                <div class="form-switch">
+                    <div class="switch-btn active" onclick="switchForm('login')">Sign In</div>
+                    <div class="switch-btn" onclick="switchForm('signup')">Register</div>
+                </div>
+
+                <div id="login-form-container" class="auth-form active">
+                    <h2 style="font-size: 2.2rem; margin-bottom: 8px;">Welcome Back</h2>
+                    <p style="margin-bottom: 35px;">Authenticate to access your active AI roadmap.</p>
+                    
+                    <form id="login-form">
+                        <div class="form-field-v5">
+                            <label>Username</label>
+                            <input type="text" id="login-username" class="form-input" placeholder="e.g. johndoe" required>
+                        </div>
+                        <div class="form-field-v5">
+                            <label>Password</label>
+                            <input type="password" id="login-password" class="form-input" placeholder="••••••••" required>
+                        </div>
+                        <button type="submit" class="btn-submit-v5" id="btn-login"><i class="fas fa-sign-in-alt"></i> Access Portal</button>
+                        <div id="login-error" class="auth-error"></div>
+                    </form>
+                </div>
+
+                <div id="signup-form-container" class="auth-form">
+                    <h2 style="font-size: 2.2rem; margin-bottom: 8px;">Initialize Identity</h2>
+                    <p style="margin-bottom: 35px;">Formulate your foundational career profile.</p>
+                    
+                    <form id="signup-form">
+                        <div style="display:grid; grid-template-columns:1fr 1fr; gap:15px;">
+                            <div class="form-field-v5" style="margin-bottom:15px;">
+                                <label>Username</label>
+                                <input type="text" id="signup-username" class="form-input" required>
+                            </div>
+                            <div class="form-field-v5" style="margin-bottom:15px;">
+                                <label>Password</label>
+                                <input type="password" id="signup-password" class="form-input" required>
+                            </div>
+                        </div>
+                        <div class="form-field-v5" style="margin-bottom:15px;">
+                            <label>Institution / College Name</label>
+                            <input type="text" id="signup-college" class="form-input" required>
+                        </div>
+                        <div class="form-field-v5" style="margin-bottom:15px;">
+                            <label>Mobile Number</label>
+                            <input type="tel" id="signup-mobile" class="form-input" required pattern="[0-9]+">
+                        </div>
+                        <div class="form-field-v5" style="margin-bottom:25px;">
+                            <label>Academic Standing</label>
+                            <select id="signup-education" class="custom-select" required>
+                                <option value="" disabled selected>Select level...</option>
+                                <option value="High School">High School Candidate</option>
+                                <option value="Undergraduate">Undergraduate (B.Tech/B.Sc)</option>
+                                <option value="Postgraduate">Postgraduate (M.Tech/M.Sc)</option>
+                                <option value="Working Professional">Enterprise Professional</option>
+                            </select>
+                        </div>
+                        <button type="submit" class="btn-submit-v5" id="btn-signup"><i class="fas fa-rocket"></i> Deploy Profile</button>
+                        <div id="signup-error" class="auth-error"></div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function switchForm(form) {
+            document.querySelectorAll('.switch-btn').forEach(b => b.classList.remove('active'));
+            document.querySelectorAll('.auth-form').forEach(f => f.classList.remove('active'));
+            if(form === 'login') {
+                document.querySelectorAll('.switch-btn')[0].classList.add('active');
+                document.getElementById('login-form-container').classList.add('active');
+            } else {
+                document.querySelectorAll('.switch-btn')[1].classList.add('active');
+                document.getElementById('signup-form-container').classList.add('active');
+            }
+        }
+
+        const API_URL = 'http://127.0.0.1:5000/api';
+
+        document.getElementById('login-form').addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const btn = document.getElementById('btn-login');
+            const err = document.getElementById('login-error');
+            btn.innerHTML = '<i class="fas fa-circle-notch fa-spin"></i> Authenticating...';
+            btn.disabled = true; err.style.display = 'none';
+
+            try {
+                const res = await fetch(`${API_URL}/login`, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({
+                        username: document.getElementById('login-username').value,
+                        password: document.getElementById('login-password').value
+                    })
+                });
+                
+                const data = await res.json();
+                if (res.ok) {
+                    localStorage.setItem('auth_token', data.token);
+                    localStorage.setItem('user_profile', JSON.stringify(data.user));
+                    window.location.href = '/';
+                } else {
+                    err.innerText = data.message || 'Login failed';
+                    err.style.display = 'block';
+                }
+            } catch (error) {
+                err.innerText = 'Network error. Ensure backend is active.';
+                err.style.display = 'block';
+            } finally {
+                btn.innerHTML = '<i class="fas fa-sign-in-alt"></i> Access Portal';
+                btn.disabled = false;
+            }
+        });
+
+        document.getElementById('signup-form').addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const btn = document.getElementById('btn-signup');
+            const err = document.getElementById('signup-error');
+            btn.innerHTML = '<i class="fas fa-circle-notch fa-spin"></i> Provisioning...';
+            btn.disabled = true; err.style.display = 'none';
+
+            try {
+                const res = await fetch(`${API_URL}/signup`, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({
+                        username: document.getElementById('signup-username').value,
+                        password: document.getElementById('signup-password').value,
+                        college_name: document.getElementById('signup-college').value,
+                        mobile_number: document.getElementById('signup-mobile').value,
+                        education_level: document.getElementById('signup-education').value
+                    })
+                });
+                const data = await res.json();
+                if (res.ok) {
+                    const loginRes = await fetch(`${API_URL}/login`, {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify({
+                            username: document.getElementById('signup-username').value,
+                            password: document.getElementById('signup-password').value
+                        })
+                    });
+                    
+                    const loginData = await loginRes.json();
+                    if (loginRes.ok) {
+                        localStorage.setItem('auth_token', loginData.token);
+                        localStorage.setItem('user_profile', JSON.stringify(loginData.user));
+                        window.location.href = '/';
+                    } else {
+                        switchForm('login');
+                        document.getElementById('login-username').value = document.getElementById('signup-username').value;
+                        document.getElementById('signup-form').reset();
+                        alert("Identity provisioned! Please log in.");
+                    }
+                } else {
+                    err.innerText = data.message || 'Signup failed';
+                    err.style.display = 'block';
+                }
+            } catch (error) {
+                err.innerText = 'Network anomaly detected.';
+                err.style.display = 'block';
+            } finally {
+                btn.innerHTML = '<i class="fas fa-rocket"></i> Deploy Profile';
+                btn.disabled = false;
+            }
+        });
+        
+        if (localStorage.getItem('auth_token')) window.location.href = '/';
+    </script>
+</body>
+</html>
