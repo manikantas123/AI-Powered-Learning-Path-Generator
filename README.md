@@ -127,7 +127,7 @@ http://127.0.0.1:5000
 * Improve UI/UX design
 * Add more AI insights
 * Support multiple file formats
-* Deploy on cloud
+* Deploy on cloud and Storage
 
 ---
 
