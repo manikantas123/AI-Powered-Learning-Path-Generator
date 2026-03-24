@@ -19,7 +19,7 @@ CORS(app)
 
 SECRET_KEY = 'your_super_secret_key_here' # In a real app, use environment variables
 DB_NAME = 'users.db'
-
+#defined the app in a better way
 def init_db():
     conn = sqlite3.connect(DB_NAME)
     cursor = conn.cursor()

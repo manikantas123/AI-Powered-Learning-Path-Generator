@@ -139,4 +139,4 @@ Thanks to open-source tools and APIs that made this project possible.
 
 ## 📬 Feedback
 
-Feel free to give suggestions or improvements!
+Feel free to give suggestions or improvements.
