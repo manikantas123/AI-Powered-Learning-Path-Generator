@@ -2,7 +2,7 @@
  * CAREER NAV CORE v5.5 - Expanded SIH 2025 Standard
  */
 
-const AI_GATEWAY = "AIzaSyB0lfrS3m8Kpp-ttD_1-bboWecIx0erdd0";
+const AI_GATEWAY = "AIzaSyBU19rBfXco0WvgHgFi9F10wdf6oSubLLw";
 let masterRoadmap = [];
 let activityLedger = JSON.parse(localStorage.getItem('activity_ledger') || '[]');
 let currentChapterIdx = null;
@@ -2273,9 +2273,9 @@ function navigateTo(viewId) {
     window.scrollTo({ top: 0, behavior: 'smooth' });
 }
 
-document.getElementById('resume-upload').addEventListener('change', function(e) {
+document.getElementById('resume-upload').addEventListener('change', function (e) {
     const fileNameDisp = document.getElementById('file-name-display');
-    if(this.files && this.files.length > 0) {
+    if (this.files && this.files.length > 0) {
         fileNameDisp.innerText = this.files[0].name;
         fileNameDisp.style.display = 'inline-block';
     } else {
@@ -2299,11 +2299,11 @@ if (dropzone) {
 
 const careerSelect = document.getElementById('career-select');
 if (careerSelect) {
-    careerSelect.addEventListener('change', function(e) {
+    careerSelect.addEventListener('change', function (e) {
         const role = e.target.value;
         const container = document.getElementById('dynamic-questions-container');
         if (!container) return;
-        
+
         const questions = roleQuestions[role];
         if (questions && questions.length > 0) {
             let html = '<h3 style="margin-bottom:15px; color:white; font-size:1.1rem;"><i class="fas fa-clipboard-list" style="color:#f59e0b;"></i> Role-Specific Assessment</h3>';
@@ -2327,11 +2327,11 @@ if (careerSelect) {
     setTimeout(() => careerSelect.dispatchEvent(new Event('change')), 100);
 }
 
-document.getElementById('skilling-form').addEventListener('submit', async function(e) {
+document.getElementById('skilling-form').addEventListener('submit', async function (e) {
     e.preventDefault();
     const role = document.getElementById('career-select').value;
     const fileInput = document.getElementById('resume-upload');
-    
+
     if (!fileInput.files || fileInput.files.length === 0) {
         alert('Please upload a resume (PDF).');
         return;
@@ -2361,13 +2361,13 @@ document.getElementById('skilling-form').addEventListener('submit', async functi
         });
 
         const data = await res.json();
-        
+
         if (res.ok) {
             document.getElementById('ai-match-perc').innerText = `${data.match_percentage || 0}%`;
-            
+
             const skillsContainer = document.getElementById('missing-skills-list');
             const missing = data.missing_skills || [];
-            if(missing.length > 0) {
+            if (missing.length > 0) {
                 skillsContainer.innerHTML = missing.map(s => `<span class="skill-tag-pill">${s}</span>`).join('');
             } else {
                 skillsContainer.innerHTML = '<span class="skill-tag-pill" style="background:#dcfce7; color:#166534; border-color:#bbf7d0;">Analysis confident!</span>';
@@ -2378,14 +2378,14 @@ document.getElementById('skilling-form').addEventListener('submit', async functi
                 topics: (chapter.topics || []).map(t => ({ ...t, completedSubs: [] })),
                 status: 'pending'
             }));
-            
+
             const userCache = JSON.parse(localStorage.getItem('user_profile') || '{}');
             userCache.roadmap = masterRoadmap;
             userCache.missing_skills = missing;
             userCache.match_percentage = data.match_percentage || 0;
             userCache.target_role = role;
             localStorage.setItem('user_profile', JSON.stringify(userCache));
-            
+
             renderRoadmap(role);
             logToLedger(`AI Analyzed Resume. Custom Path generated for ${role}`);
             loadHistoricalPaths();
@@ -2405,14 +2405,14 @@ function renderRoadmap(roleTitle) {
     const container = document.getElementById('master-roadmap-container');
     if (!container) return;
     container.innerHTML = '';
-    
+
     let totalSubsPossible = 0;
     let totalSubsCompleted = 0;
 
     masterRoadmap.forEach((chapter, idx) => {
         const totalSubs = chapter.topics.reduce((acc, t) => acc + (t.subs ? t.subs.length : 0), 0);
         const doneSubs = chapter.topics.reduce((acc, t) => acc + (t.completedSubs ? t.completedSubs.length : 0), 0);
-        
+
         totalSubsPossible += totalSubs;
         totalSubsCompleted += doneSubs;
 
@@ -2443,10 +2443,10 @@ function renderRoadmap(roleTitle) {
 
 function openChapterDetails(idx) {
     const chapter = masterRoadmap[idx];
-    document.getElementById('drawer-title').innerText = chapter.title || `Module ${idx+1}`;
+    document.getElementById('drawer-title').innerText = chapter.title || `Module ${idx + 1}`;
     const nsqfBadge = document.getElementById('drawer-nsqf');
     if (nsqfBadge) nsqfBadge.innerText = `${chapter.nsqf || 'Level 5'} COMPLIANT`;
-    
+
     const container = document.getElementById('drawer-topics-container');
     container.innerHTML = '';
 
@@ -2456,7 +2456,7 @@ function openChapterDetails(idx) {
             subsHtml = topic.subs.map(sub => {
                 const isDone = topic.completedSubs ? topic.completedSubs.includes(sub) : false;
                 return `
-                <label class="sub-item-v6 ${isDone ? 'completed' : ''}" onclick="event.preventDefault(); toggleSubTopic(${idx}, ${tIdx}, '${sub.replace(/'/g,"\\'").replace(/"/g,"&quot;")}')">
+                <label class="sub-item-v6 ${isDone ? 'completed' : ''}" onclick="event.preventDefault(); toggleSubTopic(${idx}, ${tIdx}, '${sub.replace(/'/g, "\\'").replace(/"/g, "&quot;")}')">
                     <div style="display:flex; align-items:center; gap:12px;">
                         <input type="checkbox" ${isDone ? 'checked' : ''} style="accent-color: var(--success); transform:scale(1.2); pointer-events:none;">
                         <span style="${isDone ? 'text-decoration:line-through; opacity:0.6;' : ''}">${sub}</span>
@@ -2483,24 +2483,24 @@ function toggleSubTopic(chapterIdx, topicIdx, subName) {
     const chapter = masterRoadmap[chapterIdx];
     const topic = chapter.topics[topicIdx];
     if (!topic.completedSubs) topic.completedSubs = [];
-    
+
     if (topic.completedSubs.includes(subName)) {
         topic.completedSubs = topic.completedSubs.filter(s => s !== subName);
     } else {
         topic.completedSubs.push(subName);
     }
-    
+
     const userCache = JSON.parse(localStorage.getItem('user_profile') || '{}');
     userCache.roadmap = masterRoadmap;
     localStorage.setItem('user_profile', JSON.stringify(userCache));
-    
+
     openChapterDetails(chapterIdx);
     renderRoadmap(document.getElementById('nav-target-role').innerText);
 }
 
-function closeDrawer() { 
+function closeDrawer() {
     const drawer = document.getElementById('detail-drawer');
-    if (drawer) drawer.classList.add('hidden'); 
+    if (drawer) drawer.classList.add('hidden');
 }
 
 function renderLedger() {
@@ -2527,26 +2527,42 @@ function syncBlockchain() {
     }, 1500);
 }
 
-function toggleChat() { 
+let chatHistory = [];
+
+function toggleChat() {
     const chat = document.getElementById('chat-ui');
-    if (chat) chat.classList.toggle('hidden'); 
+    if (chat) chat.classList.toggle('hidden');
 }
 
 async function sendChat() {
     const inp = document.getElementById('chat-inp');
     const msg = inp.value; if (!msg) return;
     const body = document.getElementById('chat-body');
+
+    // Add user message to UI and history (Gemini format)
     body.innerHTML += `<div style="margin-bottom:10px; text-align:right;"><b>You:</b> ${msg}</div>`;
+    chatHistory.push({ role: "user", parts: [{ text: msg }] });
     inp.value = '';
+
     try {
+        // Direct Gemini API connection
         const resp = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent?key=${AI_GATEWAY}`, {
-            method: "POST", headers: {"Content-Type": "application/json"},
-            body: JSON.stringify({contents: [{parts: [{text: msg}]}]})
+            method: "POST", headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ contents: chatHistory })
         });
         const data = await resp.json();
-        body.innerHTML += `<div style="margin-bottom:10px; color:var(--p-brand)"><b>AI:</b> ${data.candidates[0].content.parts[0].text}</div>`;
+        if (data.error) throw new Error(data.error.message);
+
+        const aiText = data.candidates[0].content.parts[0].text;
+        chatHistory.push({ role: "model", parts: [{ text: aiText }] });
+
+        body.innerHTML += `<div style="margin-bottom:10px; color:var(--p-brand)"><b>AI:</b> ${aiText}</div>`;
         body.scrollTop = body.scrollHeight;
-    } catch(e) { body.innerHTML += `<p style="color:red">API Error.</p>`; }
+    } catch (e) {
+        body.innerHTML += `<div style="margin-bottom:10px; color:red"><b>Error:</b> Could not connect to Gemini API. Please ensure you have a valid Gemini API Key set in script.js (AI_GATEWAY variable) and try again.</div>`;
+        body.scrollTop = body.scrollHeight;
+        chatHistory.pop(); // Remove the failed message from history
+    }
 }
 
 function logout() {
@@ -2564,14 +2580,14 @@ setInterval(() => {
     const mins = Math.floor(secondsSpent / 60);
     const secs = secondsSpent % 60;
     const timeDisplay = document.getElementById('site-time-spent');
-    if(timeDisplay) timeDisplay.innerText = `${mins}m ${secs}s`;
+    if (timeDisplay) timeDisplay.innerText = `${mins}m ${secs}s`;
 }, 1000);
 
 // Update navigateTo to handle profile data refresh
 const originalNavigateTo = navigateTo;
-navigateTo = function(viewId) {
+navigateTo = function (viewId) {
     originalNavigateTo(viewId);
-    if(viewId === 'profile') renderUserProfile();
+    if (viewId === 'profile') renderUserProfile();
 };
 
 function renderUserProfile() {
@@ -2579,35 +2595,35 @@ function renderUserProfile() {
         const user = JSON.parse(localStorage.getItem('user_profile') || '{}');
         if (user.username) {
             const uName = user.username;
-            const initials = uName.split(' ').map(n=>n[0]).join('').substring(0, 2).toUpperCase();
-            
+            const initials = uName.split(' ').map(n => n[0]).join('').substring(0, 2).toUpperCase();
+
             // Navbar
             const navUName = document.getElementById('nav-user-name');
             if (navUName) navUName.innerText = uName;
-            
+
             const navAvatar = document.getElementById('nav-avatar');
             if (navAvatar) navAvatar.innerText = initials;
-            
+
             const navRole = document.getElementById('nav-target-role');
             if (navRole) navRole.innerText = user.target_role || 'Pending Assessment';
-            
+
             // Profile Form / Avatar
             const pAvatar = document.getElementById('profile-page-avatar');
             if (pAvatar) pAvatar.innerText = initials;
-            
+
             // Fill Form Internals
             const pUname = document.getElementById('edit-username');
             if (pUname) pUname.value = uName;
-            
+
             const pCol = document.getElementById('edit-college');
             if (pCol) pCol.value = user.college_name || '';
-            
+
             const pEdu = document.getElementById('edit-edu');
             if (pEdu) pEdu.value = user.education_level || 'Bachelors';
-            
+
             const pMob = document.getElementById('edit-mobile');
             if (pMob) pMob.value = user.mobile_number || '';
-            
+
             // Document active resume check
             const resumeNameDisplay = document.getElementById('active-resume-name');
             const downloadBtn = document.getElementById('download-resume-btn');
@@ -2619,7 +2635,7 @@ function renderUserProfile() {
                 }
             }
         }
-    } catch(e) {
+    } catch (e) {
         console.error("Error parsing user profile", e);
     }
 }
@@ -2627,9 +2643,9 @@ function renderUserProfile() {
 // Bind Profile Edit Upload Display
 const editResumeUpload = document.getElementById('edit-resume-upload');
 if (editResumeUpload) {
-    editResumeUpload.addEventListener('change', function(e) {
+    editResumeUpload.addEventListener('change', function (e) {
         const fileNameDisp = document.getElementById('edit-file-name-display');
-        if(this.files && this.files.length > 0) {
+        if (this.files && this.files.length > 0) {
             fileNameDisp.innerText = this.files[0].name;
         } else {
             fileNameDisp.innerText = '';
@@ -2640,19 +2656,19 @@ if (editResumeUpload) {
 // Bind Profile Edit Submit
 const editForm = document.getElementById('profile-update-form');
 if (editForm) {
-    editForm.addEventListener('submit', async function(e) {
+    editForm.addEventListener('submit', async function (e) {
         e.preventDefault();
         const btn = document.getElementById('btn-update-profile');
         const msg = document.getElementById('profile-update-msg');
         btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Synchronizing...';
         msg.innerText = '';
-        
+
         const formData = new FormData();
         formData.append('username', document.getElementById('edit-username').value);
         formData.append('mobile_number', document.getElementById('edit-mobile').value);
         formData.append('college_name', document.getElementById('edit-college').value);
         formData.append('education_level', document.getElementById('edit-edu').value);
-        
+
         const fileInput = document.getElementById('edit-resume-upload');
         if (fileInput.files.length > 0) {
             formData.append('resume', fileInput.files[0]);
@@ -2665,7 +2681,7 @@ if (editForm) {
                 headers: { 'Authorization': `Bearer ${token}` },
                 body: formData
             });
-            
+
             const data = await res.json();
             if (res.ok) {
                 msg.innerText = data.message || 'Identity parameters synchronized successfully.';
@@ -2691,23 +2707,23 @@ if (editForm) {
 // Update profile dynamically on load
 async function refreshProfile() {
     const token = localStorage.getItem('auth_token');
-    if(!token) return;
+    if (!token) return;
     try {
         const res = await fetch('http://127.0.0.1:5000/api/profile', {
             headers: { 'Authorization': `Bearer ${token}` }
         });
-        if(res.ok) {
+        if (res.ok) {
             const data = await res.json();
             localStorage.setItem('user_profile', JSON.stringify(data));
             renderUserProfile();
             if (data.roadmap && data.roadmap.length > 0) {
                 masterRoadmap = data.roadmap;
                 const spEl = document.getElementById('ai-match-perc');
-                if(spEl) spEl.innerText = `${data.match_percentage || 0}%`;
+                if (spEl) spEl.innerText = `${data.match_percentage || 0}%`;
                 const skillsContainer = document.getElementById('missing-skills-list');
                 if (skillsContainer) {
                     const missing = data.missing_skills || [];
-                    if(missing.length > 0) {
+                    if (missing.length > 0) {
                         skillsContainer.innerHTML = missing.map(s => `<span class="skill-tag-pill">${s}</span>`).join('');
                     } else {
                         skillsContainer.innerHTML = '<span class="skill-tag-pill" style="background:#dcfce7; color:#166534; border-color:#bbf7d0;">Analysis confident!</span>';
@@ -2716,21 +2732,21 @@ async function refreshProfile() {
                 renderRoadmap(data.target_role || 'Custom Path');
             }
         }
-    } catch(e) { console.error("Profile refresh failed", e); }
+    } catch (e) { console.error("Profile refresh failed", e); }
 }
 
 async function loadHistoricalPaths() {
     const token = localStorage.getItem('auth_token');
-    if(!token) return;
+    if (!token) return;
     try {
         const res = await fetch('http://127.0.0.1:5000/api/roadmaps/history', {
             headers: { 'Authorization': `Bearer ${token}` }
         });
-        if(res.ok) {
+        if (res.ok) {
             const history = await res.json();
             const grid = document.getElementById('historical-paths-grid');
             if (!grid) return;
-            
+
             if (history.length === 0) {
                 grid.innerHTML = `
                 <div style="text-align:center; color:#a1a1aa; grid-column: 1 / -1; padding:50px; background:var(--bg-card); border-radius:var(--radius-lg); border:1px solid var(--border-subtle);">
@@ -2739,13 +2755,13 @@ async function loadHistoricalPaths() {
                 </div>`;
                 return;
             }
-            
+
             window.historyMap = {};
             grid.innerHTML = history.map(h => {
                 window.historyMap[h.id] = h;
                 const date = new Date(h.created_at).toLocaleDateString(undefined, { year: 'numeric', month: 'short', day: 'numeric' });
                 const chapters = h.roadmap_data ? h.roadmap_data.length : 0;
-                
+
                 return `
                 <div class="form-card-v5" style="padding:25px; transition:all 0.3s; cursor:pointer;" onmouseover="this.style.borderColor='var(--p-brand)'; this.style.transform='translateY(-5px)';" onmouseout="this.style.borderColor='var(--border-subtle)'; this.style.transform='translateY(0)'">
                     <div style="display:flex; justify-content:space-between; align-items:flex-end; margin-bottom:15px;">
@@ -2764,51 +2780,51 @@ async function loadHistoricalPaths() {
                 `;
             }).join('');
         }
-    } catch(e) { console.error("Failed to load history", e); }
+    } catch (e) { console.error("Failed to load history", e); }
 }
 
 function activateHistoricalPath(id) {
-    if(!window.historyMap || !window.historyMap[id]) return;
+    if (!window.historyMap || !window.historyMap[id]) return;
     const h = window.historyMap[id];
-    
-    if(h.roadmap_data && h.roadmap_data.length > 0) {
+
+    if (h.roadmap_data && h.roadmap_data.length > 0) {
         masterRoadmap = h.roadmap_data;
         const spEl = document.getElementById('ai-match-perc');
-        if(spEl) spEl.innerText = `${h.match_percentage || 0}%`;
-        
+        if (spEl) spEl.innerText = `${h.match_percentage || 0}%`;
+
         const skillsContainer = document.getElementById('missing-skills-list');
         if (skillsContainer) {
             const missing = h.missing_skills || [];
-            if(missing.length > 0) {
+            if (missing.length > 0) {
                 skillsContainer.innerHTML = missing.map(s => `<span class="skill-tag-pill">${s}</span>`).join('');
             } else {
                 skillsContainer.innerHTML = '<span class="skill-tag-pill" style="background:#dcfce7; color:#166534; border-color:#bbf7d0;">Analysis confident!</span>';
             }
         }
-        
+
         document.getElementById('nav-target-role').innerText = h.target_role;
         renderRoadmap(h.target_role);
-        
+
         logToLedger('Reactivated historical AI trajectory.');
         navigateTo('dashboard');
     }
 }
 
 // --- Interactive Visual Roadmaps ---
-window.exploreNodeClick = function(chapterIdxStr, topicIdxStr) {
+window.exploreNodeClick = function (chapterIdxStr, topicIdxStr) {
     const role = document.getElementById('explore-role-select').value;
     const chapIdx = parseInt(chapterIdxStr);
     const syllabus = syllabusBank[role];
     if (!syllabus || !syllabus[chapIdx]) return;
-    
+
     const chapter = syllabus[chapIdx];
     document.getElementById('drawer-title').innerText = chapter.title;
     const nsqfBadge = document.getElementById('drawer-nsqf');
     if (nsqfBadge) nsqfBadge.innerText = `${chapter.nsqf} COMPLIANT`;
-    
+
     const container = document.getElementById('drawer-topics-container');
     container.innerHTML = '';
-    
+
     let topicsToRender = chapter.topics;
     if (topicIdxStr !== undefined && topicIdxStr !== null && topicIdxStr.toString().trim() !== '') {
         const tIdx = parseInt(topicIdxStr);
@@ -2818,7 +2834,7 @@ window.exploreNodeClick = function(chapterIdxStr, topicIdxStr) {
             if (nsqfBadge) nsqfBadge.innerText = "TOPIC DETAILS";
         }
     }
-    
+
     topicsToRender.forEach((topic) => {
         let subsHtml = '';
         if (topic.subs && topic.subs.length > 0) {
@@ -2847,11 +2863,11 @@ window.exploreNodeClick = function(chapterIdxStr, topicIdxStr) {
         `;
         container.appendChild(topicDiv);
     });
-    
+
     document.getElementById('detail-drawer').classList.remove('hidden');
 };
 
-window.openYouTubeTutorial = function(role, topicName, subName) {
+window.openYouTubeTutorial = function (role, topicName, subName) {
     const query = `${role} ${topicName} ${subName} tutorial`;
     const url = `https://www.youtube.com/results?search_query=${encodeURIComponent(query)}`;
     window.open(url, '_blank');
@@ -2860,26 +2876,26 @@ window.openYouTubeTutorial = function(role, topicName, subName) {
 async function renderMermaidGraph(role) {
     const syllabus = syllabusBank[role];
     if (!syllabus) return;
-    
+
     const container = document.getElementById('mermaid-render-container');
     container.innerHTML = '<div class="mermaid" id="graphDiv"></div>';
-    
+
     let graphDef = 'graph TD\n';
     graphDef += `Root["🎯 ${role} Track"]\n`;
     graphDef += `style Root fill:#8b5cf6,stroke:#fff,stroke-width:3px,color:#fff,rx:10,ry:10\n`;
-    
+
     syllabus.forEach((chap, idx) => {
         const cleanTitle = chap.title.replace(/["']/g, '');
         graphDef += `C${idx}["📚 ${cleanTitle}"]\n`;
         const modQuery = encodeURIComponent(`${role} ${cleanTitle} full course tutorial`);
         graphDef += `click C${idx} "https://www.youtube.com/results?search_query=${modQuery}" "Search ${cleanTitle} on YouTube"\n`;
-        
+
         if (idx === 0) {
             graphDef += `Root --> C${idx}\n`;
         } else {
-            graphDef += `C${idx-1} === C${idx}\n`;
+            graphDef += `C${idx - 1} === C${idx}\n`;
         }
-        
+
         chap.topics.forEach((top, tIdx) => {
             const cleanName = top.name.replace(/["']/g, '');
             graphDef += `T${idx}_${tIdx}["${cleanName}"]\n`;
@@ -2889,17 +2905,17 @@ async function renderMermaidGraph(role) {
             graphDef += `click T${idx}_${tIdx} "https://www.youtube.com/results?search_query=${topQuery}" "Search ${cleanName} on YouTube" _blank\n`;
             graphDef += `style T${idx}_${tIdx} fill:#fbbf24,stroke:#d97706,stroke-width:2px,rx:5,ry:5,color:#000\n`;
         });
-        
+
         graphDef += `style C${idx} fill:#3b82f6,stroke:#1e3a8a,stroke-width:3px,rx:10,ry:10,color:#fff\n`;
     });
-    
+
     try {
         if (typeof mermaid !== 'undefined') {
             mermaid.initialize({ startOnLoad: false, theme: 'dark', securityLevel: 'loose' });
             const { svg } = await mermaid.render('mermaid-chart-gen', graphDef);
             document.getElementById('graphDiv').innerHTML = svg;
         }
-    } catch(e) {
+    } catch (e) {
         console.error("Mermaid error:", e);
     }
 }
