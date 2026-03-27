@@ -2,7 +2,7 @@
  * CAREER NAV CORE v5.5 - Expanded SIH 2025 Standard
  */
 
-const AI_GATEWAY = "AIzaSyBU19rBfXco0WvgHgFi9F10wdf6oSubLLw";
+const AI_GATEWAY = "AIzaSyAWJEeGBRAfowyosnE2suVjRpMG8LSiqhA";
 let masterRoadmap = [];
 let activityLedger = JSON.parse(localStorage.getItem('activity_ledger') || '[]');
 let currentChapterIdx = null;
@@ -2545,21 +2545,25 @@ async function sendChat() {
     inp.value = '';
 
     try {
-        // Direct Gemini API connection
-        const resp = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent?key=${AI_GATEWAY}`, {
+        const messages = chatHistory.map(h => ({
+            role: h.role === 'model' ? 'assistant' : 'user',
+            content: h.parts[0].text
+        }));
+
+        const resp = await fetch('http://127.0.0.1:5000/api/chat', {
             method: "POST", headers: { "Content-Type": "application/json" },
-            body: JSON.stringify({ contents: chatHistory })
+            body: JSON.stringify({ messages })
         });
         const data = await resp.json();
-        if (data.error) throw new Error(data.error.message);
+        if (!resp.ok) throw new Error(data.message || data.error || 'Proxy API Error');
 
-        const aiText = data.candidates[0].content.parts[0].text;
+        const aiText = data.choices[0].message.content;
         chatHistory.push({ role: "model", parts: [{ text: aiText }] });
 
         body.innerHTML += `<div style="margin-bottom:10px; color:var(--p-brand)"><b>AI:</b> ${aiText}</div>`;
         body.scrollTop = body.scrollHeight;
     } catch (e) {
-        body.innerHTML += `<div style="margin-bottom:10px; color:red"><b>Error:</b> Could not connect to Gemini API. Please ensure you have a valid Gemini API Key set in script.js (AI_GATEWAY variable) and try again.</div>`;
+        body.innerHTML += `<div style="margin-bottom:10px; color:red"><b>Error:</b> Could not connect to the AI Backend Proxy. Please try again later.</div>`;
         body.scrollTop = body.scrollHeight;
         chatHistory.pop(); // Remove the failed message from history
     }

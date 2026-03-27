@@ -316,7 +316,7 @@ def analyze_resume(current_user):
         
         try:
             import requests
-            url = "https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent?key=AIzaSyBU19rBfXco0WvgHgFi9F10wdf6oSubLLw"
+            url = "https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent?key=AIzaSyAWJEeGBRAfowyosnE2suVjRpMG8LSiqhA"
             headers = {'Content-Type': 'application/json'}
             payload = {"contents": [{"parts": [{"text": prompt}]}]}
             
